@@ -49,13 +49,25 @@
 
     .nav-brand {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1.05rem;
       color: var(--gold);
       white-space: nowrap;
+      line-height: 1.2;
+    }
+    .nav-brand img {
+      height: 56px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
+    .nav-brand .brand-sub {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.3px;
     }
     .nav-brand .dim { color: rgba(255,255,255,0.55); font-weight: 400; margin-left: 2px; }
 
@@ -755,7 +767,8 @@
 <!-- ═══════════════════════════  NAVBAR  ═══════════════════════════ -->
 <nav class="navbar" id="top">
   <a class="nav-brand" href="#top">
-    🎓 CT101&nbsp;<span class="dim">| University of Galway</span>
+    <img src="images/uog-logo.png" alt="University of Galway">
+    <span class="brand-sub">University of Galway &middot; School of Computer Science &middot; Computing Hackathon 2026</span>
   </a>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">☰</button>
   <ul class="nav-links" id="navLinks">
