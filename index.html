@@ -49,27 +49,22 @@
 
     .nav-brand {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 3px;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
       color: var(--gold);
       white-space: nowrap;
-      line-height: 1.2;
-    }
-    .nav-brand img {
-      height: 56px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      flex-shrink: 0;
-    }
-    .nav-brand .brand-sub {
-      font-size: 0.72rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 0.3px;
     }
     .nav-brand .dim { color: rgba(255,255,255,0.55); font-weight: 400; margin-left: 2px; }
+    .nav-logo {
+      height: 48px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
 
     .nav-links {
       display: flex;
@@ -766,9 +761,7 @@
 
 <!-- ═══════════════════════════  NAVBAR  ═══════════════════════════ -->
 <nav class="navbar" id="top">
-  <a class="nav-brand" href="#top">
-    <img src="images/uog-logo.png" alt="University of Galway">
-  </a>
+  <a class="nav-brand" href="#top">University of Galway &middot; <span class="dim">Computing Hackathon 2026</span></a>
   <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">☰</button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
@@ -781,13 +774,13 @@
     <li><a href="#registration">Register</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
+  <img src="images/uog-logo.png" alt="University of Galway" class="nav-logo">
 </nav>
 
 <!-- ═══════════════════════════  HERO  ════════════════════════════ -->
 <div class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <img src="images/uog-logo.png" alt="University of Galway" style="height:80px;width:auto;filter:brightness(0) invert(1);margin-bottom:1.2rem;">
     <p class="hero-eyebrow">University of Galway &middot; School of Computer Science</p>
     <h1 class="hero-title">Computing Hackathon 2026</h1>
     <p class="hero-sub">Innovation, Coding, and Creative Problem‑Solving</p>
