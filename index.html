@@ -849,6 +849,39 @@
       vertical-align: middle;
     }
     @keyframes vspin { to { transform: rotate(360deg); } }
+
+    /* ── GDPR NOTICE BANNER ──────────────────────────── */
+    #gdpr-notice {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.88);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.35);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    #gdpr-notice.hidden { display: none; }
+    #gdpr-notice a { color: var(--gold); text-decoration: underline; }
+    #gdpr-dismiss {
+      padding: 0.4rem 1.4rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--maroon);
+      color: #fff;
+      flex-shrink: 0;
+      transition: opacity .2s;
+    }
+    #gdpr-dismiss:hover { opacity: 0.85; }
   </style>
 </head>
 <body>
@@ -1555,7 +1588,27 @@
       });
   })();
 </script>
-</div>
 
-</body>
-</html>
+<!-- ── GDPR / Cookie Notice ──────────────────────── -->
+<div id="gdpr-notice">
+  <p>
+    <strong style="color:var(--gold);">🍪 Privacy Notice</strong> &nbsp;
+    This site displays an anonymous page-view counter powered by
+    <a href="https://counterapi.dev" target="_blank" rel="noopener">CounterAPI</a>.
+    No personal data, cookies, or tracking identifiers are collected or stored.
+    See the <a href="https://www.universityofgalway.ie/privacy/" target="_blank" rel="noopener">University of Galway Privacy Policy</a>.
+  </p>
+  <button id="gdpr-dismiss">Got it</button>
+</div>
+<script>
+  (function () {
+    var notice = document.getElementById('gdpr-notice');
+    if (localStorage.getItem('gdpr_dismissed') === '1') {
+      notice.classList.add('hidden');
+    }
+    document.getElementById('gdpr-dismiss').addEventListener('click', function () {
+      localStorage.setItem('gdpr_dismissed', '1');
+      notice.classList.add('hidden');
+    });
+  })();
+</script>
