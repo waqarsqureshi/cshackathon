@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CT101 Computing Hackathon 2026 – University of Galway</title>
+  <meta name="description" content="CT101 Computing Systems Hackathon 2026 – IoT is Bold & Old is Gold. Wednesday, March 18, 2026 at University of Galway.">
+  <style>
+    :root {
+      --maroon:      #84003d;
+      --dark-maroon: #5C0024;
+      --gold:        #ffc72b;
+      --gold-dark:   #d4a017;
+      --white:       #ffffff;
+      --light-bg:    #f8f4f5;
+      --card-bg:     #ffffff;
+      --text:        #333333;
+      --text-light:  #666666;
+      --radius:      12px;
+      --shadow:      0 4px 20px rgba(132,0,61,0.13);
+      --shadow-lg:   0 8px 40px rgba(132,0,61,0.22);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAVBAR ─────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--maroon);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 62px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .nav-brand .dim { color: rgba(255,255,255,0.55); font-weight: 400; margin-left: 2px; }
+
+    .nav-links {
+      display: flex;
+      gap: 0.1rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--gold); background: rgba(255,199,43,0.15); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: var(--dark-maroon);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-poster {
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(92,0,36,0.08) 0%,
+        rgba(92,0,36,0.75) 60%,
+        rgba(92,0,36,0.97) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 2rem 3.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--gold);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.45);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+    }
+
+    /* Countdown */
+    .countdown-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(0,0,0,0.35);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 54px; }
+    .cd-val  { font-size: 2.6rem; font-weight: 800; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
+    .cd-lbl  { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+    .cd-sep  { font-size: 2.2rem; font-weight: 800; color: var(--gold); opacity: 0.45; align-self: flex-start; padding-top: 4px; }
+
+    /* Hero badges */
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .h-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,199,43,0.15);
+      border: 1px solid rgba(255,199,43,0.5);
+      color: var(--white);
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+    }
+    .h-badge strong { color: var(--gold); }
+
+    /* ── SHARED SECTION STYLES ───────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .sec-hdr { text-align: center; margin-bottom: 3rem; }
+    .sec-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .sec-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--dark-maroon);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .sec-title span { color: var(--maroon); }
+    .sec-div { width: 60px; height: 4px; background: var(--gold); border-radius: 2px; margin: 0 auto; }
+
+    /* ── ABOUT ───────────────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+    .about-text strong { color: var(--dark-maroon); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+
+    .stat-card {
+      background: var(--light-bg);
+      border-left: 4px solid var(--maroon);
+      border-radius: var(--radius);
+      padding: 1.2rem 1rem;
+      text-align: center;
+    }
+    .stat-val  { font-size: 2rem; font-weight: 800; color: var(--maroon); line-height: 1; }
+    .stat-lbl  { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
+
+    /* ── EVENT DETAILS ───────────────────────────────── */
+    #event { background: var(--maroon); }
+
+    #event .sec-label { color: var(--gold); }
+    #event .sec-title { color: var(--white); }
+    #event .sec-div   { background: var(--gold); }
+
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,199,43,0.4);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: transform .2s, background .2s;
+    }
+    .event-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.16); }
+
+    .ev-icon  { font-size: 2.6rem; margin-bottom: 0.6rem; }
+    .event-card h3 { color: var(--gold); font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .ev-venue { font-size: 1.35rem; font-weight: 700; color: var(--white); }
+    .ev-time  { font-size: 1.05rem; color: rgba(255,255,255,0.75); margin-top: 0.15rem; }
+    .ev-note  { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-top: 0.6rem; }
+
+    /* ── TIMELINE ────────────────────────────────────── */
+    #timeline { background: var(--light-bg); }
+
+    .timeline {
+      position: relative;
+      padding: 1rem 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--maroon), var(--gold));
+      transform: translateX(-50%);
+    }
+
+    .tl-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 2.5rem);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .tl-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 2.5rem);
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 1.4rem;
+      width: 18px; height: 18px;
+      background: var(--maroon);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .tl-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      box-shadow: var(--shadow);
+      max-width: 420px;
+      border-top: 4px solid var(--maroon);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .tl-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    .tl-phase {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .tl-card h3  { color: var(--dark-maroon); font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .tl-week     { color: var(--text-light); font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .tl-weight   {
+      display: inline-block;
+      background: var(--maroon);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+    }
+    .tl-card p   { color: var(--text-light); font-size: 0.93rem; margin-top: 0.6rem; }
+
+    /* ── TRACKS ──────────────────────────────────────── */
+    #tracks { background: var(--white); }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .track-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .track-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    .track-header {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+    }
+    .track-header.dark { background: linear-gradient(135deg, var(--dark-maroon) 0%, var(--maroon) 100%); }
+
+    .track-icon  { font-size: 3rem; margin-bottom: 0.4rem; }
+    .track-header h3 { color: var(--gold); font-size: 1.45rem; margin-bottom: 0.25rem; }
+    .track-header p  { color: rgba(255,255,255,0.78); font-size: 0.93rem; }
+
+    .track-body { background: var(--card-bg); padding: 2rem; }
+
+    .track-hw {
+      background: var(--light-bg);
+      border-left: 4px solid var(--gold);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.2rem;
+      font-size: 0.93rem;
+      color: var(--text);
+    }
+    .track-hw strong { color: var(--maroon); }
+
+    .track-list { list-style: none; }
+    .track-list li {
+      padding: 0.35rem 0;
+      color: var(--text-light);
+      font-size: 0.93rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .track-list li::before { content: '✓'; color: var(--maroon); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── TEAMS ───────────────────────────────────────── */
+    #teams { background: var(--light-bg); }
+
+    .filter-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--white);
+      border: 2px solid var(--maroon);
+      color: var(--maroon);
+      padding: 0.45rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all .2s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover { background: var(--maroon); color: var(--white); }
+
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border-top: 4px solid var(--maroon);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .team-card.hidden { display: none; }
+
+    .team-num {
+      width: 36px; height: 36px;
+      background: var(--maroon);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .team-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark-maroon);
+      line-height: 1.3;
+    }
+    .t-badge {
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+    .badge-iot {
+      background: rgba(132,0,61,0.09);
+      color: var(--maroon);
+      border: 1px solid rgba(132,0,61,0.3);
+    }
+    .badge-old {
+      background: rgba(255,199,43,0.18);
+      color: #7a5400;
+      border: 1px solid rgba(255,199,43,0.55);
+    }
+
+    /* ── JUDGING ─────────────────────────────────────── */
+    #judging { background: var(--white); }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .crit-card {
+      background: var(--light-bg);
+      border-radius: var(--radius);
+      padding: 2rem 1.4rem;
+      text-align: center;
+      border-top: 4px solid var(--maroon);
+      box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+    .crit-card:hover { transform: translateY(-4px); }
+
+    .crit-icon   { font-size: 2.4rem; margin-bottom: 0.8rem; }
+    .crit-pct    { font-size: 2.5rem; font-weight: 800; color: var(--maroon); line-height: 1; }
+    .crit-name   { font-size: 0.98rem; font-weight: 700; color: var(--dark-maroon); margin: 0.4rem 0; }
+    .crit-desc   { font-size: 0.83rem; color: var(--text-light); line-height: 1.5; }
+
+    .bar-bg {
+      width: 100%; height: 8px;
+      background: rgba(132,0,61,0.1);
+      border-radius: 4px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+    .bar { height: 100%; background: linear-gradient(90deg, var(--maroon), var(--gold)); border-radius: 4px; }
+
+    /* ── FAQ ─────────────────────────────────────────── */
+    #faq { background: var(--light-bg); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      border-left: 4px solid var(--maroon);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .faq-item h4 { color: var(--dark-maroon); font-size: 0.97rem; margin-bottom: 0.45rem; }
+    .faq-item p  { color: var(--text-light); font-size: 0.92rem; line-height: 1.6; }
+
+    .contact-box {
+      background: var(--maroon);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .contact-box h3 { color: var(--gold); font-size: 1.45rem; margin-bottom: 0.4rem; }
+    .contact-box p  { color: rgba(255,255,255,0.82); margin-bottom: 0.4rem; }
+    .contact-box a  { color: var(--gold); text-decoration: none; }
+    .contact-box a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--dark-maroon);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2.2rem 1rem;
+      font-size: 0.88rem;
+    }
+    footer strong { color: var(--gold); }
+    footer p { margin: 0.3rem 0; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 62px; left: 0; right: 0;
+        background: var(--dark-maroon);
+        padding: 0.8rem 1rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      }
+      .nav-links.open  { display: flex; }
+      .nav-toggle      { display: block; }
+
+      .about-grid      { grid-template-columns: 1fr; gap: 2rem; }
+      .tracks-grid     { grid-template-columns: 1fr; }
+      .faq-grid        { grid-template-columns: 1fr; }
+
+      .timeline::before { left: 16px; }
+      .tl-item,
+      .tl-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-right: 0;
+        padding-left: 44px;
+      }
+      .tl-dot { left: 16px; }
+      .tl-card { max-width: 100%; }
+
+      .countdown-wrap  { gap: 0.6rem; padding: 0.9rem 1.2rem; }
+      .cd-val          { font-size: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .event-cards { grid-template-columns: 1fr; }
+      .criteria-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 3.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════  NAVBAR  ═══════════════════════════ -->
+<nav class="navbar" id="top">
+  <a class="nav-brand" href="#top">
+    🎓 CT101&nbsp;<span class="dim">| University of Galway</span>
+  </a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#event">Event</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#tracks">Tracks</a></li>
+    <li><a href="#teams">Teams</a></li>
+    <li><a href="#judging">Judging</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════  HERO  ════════════════════════════ -->
+<div class="hero">
+  <img src="images/tech-showcase.jpg"
+       alt="CT101 Computing Hackathon 2026 – University of Galway event poster"
+       class="hero-poster">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">University of Galway · School of Computer Science · CT101</p>
+    <h1 class="hero-title">Computing Hackathon 2026</h1>
+    <p class="hero-sub">Innovation, Coding, and Creative Problem‑Solving</p>
+
+    <div class="countdown-wrap" id="countdown">
+      <div class="cd-unit"><div class="cd-val" id="cd-days">00</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-hours">00</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-mins">00</div><div class="cd-lbl">Minutes</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-secs">00</div><div class="cd-lbl">Seconds</div></div>
+    </div>
+
+    <div class="hero-badges">
+      <span class="h-badge">📅 <strong>Wednesday, March 18, 2026</strong></span>
+      <span class="h-badge">🏛️ Demo &mdash; <strong>CSB 2015 &amp; CSB 2014</strong> &nbsp;3:00–6:00 PM</span>
+      <span class="h-badge">🏆 Awards &mdash; <strong>SULT, Corrib Room</strong> &nbsp;6:00–7:00 PM</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════  ABOUT  ══════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">About the Event</div>
+      <h2 class="sec-title">What is the <span>CT101 Hackathon?</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>The CT101 Computing Systems Hackathon is a <strong>team‑based project challenge</strong> that runs
+           across 12 weeks of the semester. Student teams choose one of two themes and build a real,
+           working system using university hardware.</p>
+        <p>Pick <strong>IoT is Bold</strong> to create interactive, sensor-driven projects with a
+           Raspberry Pi 4 and Sense HAT — or choose <strong>Old is Gold</strong> to deploy and
+           manage services on legacy PC server infrastructure.</p>
+        <p>Teams deliver a <strong>live public demo</strong> to a panel of judges at the semester's
+           flagship showcase event, demonstrating technical depth, teamwork, and creative
+           problem‑solving.</p>
+        <p>Module coordinator:&nbsp;<strong>Dr. Waqar Shahid Qureshi</strong>,
+           School of Computer Science, University of Galway.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-val">15%</div>
+          <div class="stat-lbl">Module Grade Weight</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">12</div>
+          <div class="stat-lbl">Weeks Duration</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">2–3</div>
+          <div class="stat-lbl">Students per Team</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">19</div>
+          <div class="stat-lbl">Competing Teams</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  EVENT  ══════════════════════════ -->
+<section id="event">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Event Details</div>
+      <h2 class="sec-title">Wednesday, March 18, 2026</h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="event-cards">
+      <div class="event-card">
+        <div class="ev-icon">💻</div>
+        <h3>Live Demonstrations</h3>
+        <div class="ev-venue">CSB 2015 &amp; CSB 2014</div>
+        <div class="ev-time">3:00 PM – 6:00 PM</div>
+        <div class="ev-note">Teams demo their working systems to the judging panel</div>
+      </div>
+      <div class="event-card">
+        <div class="ev-icon">🏆</div>
+        <h3>Awards Ceremony</h3>
+        <div class="ev-venue">SULT, Corrib Room</div>
+        <div class="ev-time">6:00 PM – 7:00 PM</div>
+        <div class="ev-note">Winners announced and prizes awarded — all welcome</div>
+      </div>
+      <div class="event-card">
+        <div class="ev-icon">📋</div>
+        <h3>What to Bring</h3>
+        <div class="ev-venue" style="font-size:1rem;">Your Project + Demo</div>
+        <div class="ev-time" style="font-size:0.92rem;">Hardware · Slides · Report</div>
+        <div class="ev-note">Have your system running and set up before 3:00 PM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  TIMELINE  ════════════════════════ -->
+<section id="timeline">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Assessment Phases</div>
+      <h2 class="sec-title">Hackathon <span>Timeline</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-phase">Phase 1</div>
+          <h3>Project Abstract</h3>
+          <div class="tl-week">📅 Weeks 1–4</div>
+          <span class="tl-weight">10% of Hackathon Grade</span>
+          <p>A one‑page abstract describing your team's chosen theme, proposed system, and high-level project plan.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-phase">Phase 2</div>
+          <h3>Functional Requirements Document</h3>
+          <div class="tl-week">📅 Weeks 6–7</div>
+          <span class="tl-weight">25% of Hackathon Grade</span>
+          <p>A 4–5 page FRD detailing system requirements, architecture decisions, and your implementation plan.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" style="border-top-color: var(--gold);">
+          <div class="tl-phase" style="color:var(--gold-dark);">Phase 3 ⭐ — Demo Day</div>
+          <h3>Live Presentation &amp; Demonstration</h3>
+          <div class="tl-week">📅 Week 10 — Wednesday, March 18, 2026</div>
+          <span class="tl-weight" style="background:var(--gold-dark);">35% of Hackathon Grade</span>
+          <p>Live demo to judges in CSB 2015/2014. Show your working system and present clearly within your time slot.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-phase">Phase 4</div>
+          <h3>Final Design Document</h3>
+          <div class="tl-week">📅 Week 14</div>
+          <span class="tl-weight">30% of Hackathon Grade</span>
+          <p>An 8–12 page final report covering architecture, implementation details, testing results, and reflection.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  TRACKS  ═════════════════════════ -->
+<section id="tracks">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Choose Your Challenge</div>
+      <h2 class="sec-title">Two <span>Tracks</span>, Two Technologies</h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="tracks-grid">
+
+      <!-- IoT is Bold -->
+      <div class="track-card">
+        <div class="track-header">
+          <div class="track-icon">🍓</div>
+          <h3>IoT is Bold</h3>
+          <p>Embedded Systems · Sensors · Real‑Time Data</p>
+        </div>
+        <div class="track-body">
+          <div class="track-hw">
+            <strong>Hardware Kit:</strong>&nbsp; Raspberry Pi 4 · Sense HAT · Camera Module v3 · USB‑C Power Supply
+          </div>
+          <ul class="track-list">
+            <li>8×8 RGB LED matrix display output</li>
+            <li>Temperature, humidity &amp; pressure sensors</li>
+            <li>Accelerometer, gyroscope &amp; magnetometer</li>
+            <li>12MP camera with 1080p video recording</li>
+            <li>5‑button mini joystick for interaction</li>
+            <li>Wi‑Fi &amp; Bluetooth connectivity</li>
+            <li>Categories: environmental monitoring, motion detection, interactive display, data logging</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Old is Gold -->
+      <div class="track-card">
+        <div class="track-header dark">
+          <div class="track-icon">🖥️</div>
+          <h3>Old is Gold</h3>
+          <p>Legacy Servers · Web Services · Infrastructure</p>
+        </div>
+        <div class="track-body">
+          <div class="track-hw" style="border-left-color:var(--maroon);">
+            <strong>Hardware:</strong>&nbsp; Legacy Desktop PC · HDD/SSD storage · Ethernet networking · 20 systems available
+          </div>
+          <ul class="track-list">
+            <li>Static or dynamic web server</li>
+            <li>Database‑driven application</li>
+            <li>File sharing or media server</li>
+            <li>Real‑time communication server</li>
+            <li>Game or application server</li>
+            <li>System monitoring dashboard</li>
+            <li>Flexible network infrastructure on request</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  TEAMS  ══════════════════════════ -->
+<section id="teams">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">The Competitors</div>
+      <h2 class="sec-title">Competing <span>Teams</span></h2>
+      <div class="sec-div"></div>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterTeams('all', this)">All Teams (19)</button>
+      <button class="filter-btn" onclick="filterTeams('iot', this)">🍓 IoT is Bold (4)</button>
+      <button class="filter-btn" onclick="filterTeams('old', this)">🖥️ Old is Gold (15)</button>
+    </div>
+
+    <div class="teams-grid" id="teamsGrid">
+      <div class="team-card" data-track="iot">
+        <div class="team-num">2</div>
+        <div class="team-name">Athlone</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="iot">
+        <div class="team-num">12</div>
+        <div class="team-name">Rubus Labs</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="iot">
+        <div class="team-num">14</div>
+        <div class="team-name">BikePi</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="iot">
+        <div class="team-num">17</div>
+        <div class="team-name">De Biles</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">1</div>
+        <div class="team-name">Error But Run</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">3</div>
+        <div class="team-name">FireTech Innovators</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">4</div>
+        <div class="team-name">jakub</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">5</div>
+        <div class="team-name">JackAces</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">6</div>
+        <div class="team-name">The Phoques</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">7</div>
+        <div class="team-name">Pints++</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">8a</div>
+        <div class="team-name">Lizards of the Roast</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">8b</div>
+        <div class="team-name">Lizards of the Roast</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">9</div>
+        <div class="team-name">Hackathon Tonight, Queen?</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">10</div>
+        <div class="team-name">Shebang</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">11</div>
+        <div class="team-name">The Burrito</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">13</div>
+        <div class="team-name">Paranoid Androids</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">15</div>
+        <div class="team-name">8Ball</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">16</div>
+        <div class="team-name">Pocket Aces</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">18</div>
+        <div class="team-name">HTK Studio</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">19</div>
+        <div class="team-name">Golden Archive</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  JUDGING  ════════════════════════ -->
+<section id="judging">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Assessment</div>
+      <h2 class="sec-title">Judging <span>Criteria</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:var(--text-light);max-width:540px;margin:1rem auto 0;font-size:0.97rem;">
+        All presentations are assessed by a panel of judges using the following weighted criteria:
+      </p>
+    </div>
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-icon">🎯</div>
+        <div class="crit-pct">40%</div>
+        <div class="crit-name">Demonstration Quality</div>
+        <div class="crit-desc">How well does the working system perform? Does it meet the stated project requirements?</div>
+        <div class="bar-bg"><div class="bar" style="width:40%"></div></div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">🗣️</div>
+        <div class="crit-pct">30%</div>
+        <div class="crit-name">Presentation Clarity</div>
+        <div class="crit-desc">Is the project communicated clearly? Are visuals and explanations easy to follow?</div>
+        <div class="bar-bg"><div class="bar" style="width:30%"></div></div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">⚙️</div>
+        <div class="crit-pct">20%</div>
+        <div class="crit-name">Technical Communication</div>
+        <div class="crit-desc">Can the team explain their technical decisions, architecture, and challenges clearly?</div>
+        <div class="bar-bg"><div class="bar" style="width:20%"></div></div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">⏱️</div>
+        <div class="crit-pct">10%</div>
+        <div class="crit-name">Time Management</div>
+        <div class="crit-desc">Does the team complete the demo and Q&amp;A within the allocated time slot?</div>
+        <div class="bar-bg"><div class="bar" style="width:10%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  FAQ  ════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">FAQ &amp; Contact</div>
+      <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>❓ When is hardware checked out and returned?</h4>
+        <p>Hardware checkout is mid-Week 8. All kits (Raspberry Pi &amp; Legacy PCs) must be returned by the end of Week 12.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ Can we switch tracks mid-semester?</h4>
+        <p>No. Track selection is final after Phase 1. Hardware is limited (max 15 teams per theme), so commit to your chosen track from the start.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ What does Demo Day (Phase 3) involve?</h4>
+        <p>Teams set up in CSB 2015 or CSB 2014. Judges visit each station and score based on the four criteria. Be set up and ready before 3:00 PM.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ Does the entire team need to present?</h4>
+        <p>Yes. All team members are expected to take part in the live demo. Judges may direct questions to any team member.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ What if our system isn't fully working on demo day?</h4>
+        <p>Partial marks are awarded. Show what works, explain challenges clearly — your Technical Communication and Presentation scores still count for 50%.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ Where is the awards ceremony?</h4>
+        <p>SULT, Corrib Room from 6:00 PM to 7:00 PM on Wednesday, March 18, 2026. All teams, family, and guests are welcome.</p>
+      </div>
+    </div>
+    <div class="contact-box">
+      <h3>📧 Get in Touch</h3>
+      <p>Module coordinator &amp; hackathon organiser:</p>
+      <p><strong style="color:#fff;font-size:1.1rem;">Dr. Waqar Shahid Qureshi</strong></p>
+      <p>School of Computer Science &nbsp;·&nbsp; University of Galway</p>
+      <p style="margin-top:0.8rem;">
+        <a href="mailto:waqar.qureshi@universityofgalway.ie">waqar.qureshi@universityofgalway.ie</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  FOOTER  ═════════════════════════ -->
+<footer>
+  <p><strong>CT101 Computing Systems Hackathon 2026</strong></p>
+  <p>School of Computer Science &nbsp;·&nbsp; University of Galway</p>
+  <p style="margin-top:0.7rem;font-size:0.78rem;opacity:0.55;">
+    Theme 2026: &ldquo;IoT is Bold&rdquo; &amp; &ldquo;Old is Gold&rdquo; &nbsp;&mdash;&nbsp;
+    Hosted at <a href="https://github.com/waqarsqureshi/uoghackathon" style="color:var(--gold);text-decoration:none;">github.com/waqarsqureshi/uoghackathon</a>
+  </p>
+</footer>
+
+<script>
+  /* ── Countdown ───────────────────────────────────── */
+  const TARGET = new Date('2026-03-18T15:00:00');
+
+  function tick() {
+    const diff = TARGET - new Date();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<div style="font-size:1.5rem;color:var(--gold);font-weight:800;padding:0.5rem 1rem;">🎉 The event is live right now!</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cd-days').textContent  = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ── Mobile nav ──────────────────────────────────── */
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () =>
+      document.getElementById('navLinks').classList.remove('open')));
+
+  /* ── Team filter ─────────────────────────────────── */
+  function filterTeams(track, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.team-card').forEach(card => {
+      card.classList.toggle('hidden', track !== 'all' && card.dataset.track !== track);
+    });
+  }
+</script>
+
+</body>
+</html>
