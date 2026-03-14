@@ -29,6 +29,10 @@
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
 
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Raleway', sans-serif;
+    }
+
     body {
       font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
       background: var(--light-bg);
@@ -76,11 +80,13 @@
       list-style: none;
     }
     .nav-links a {
+      font-family: 'Raleway', sans-serif;
       color: rgba(255,255,255,0.85);
       text-decoration: none;
       padding: 0.4rem 0.7rem;
       border-radius: 6px;
       font-size: 0.88rem;
+      font-weight: 600;
       transition: color .2s, background .2s;
     }
     .nav-links a:hover { color: var(--gold); background: rgba(255,199,43,0.15); }
