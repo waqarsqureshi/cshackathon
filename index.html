@@ -912,6 +912,21 @@
       transition: opacity .2s;
     }
     #gdpr-dismiss:hover { opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      #gdpr-notice {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.9rem 1rem;
+        gap: 0.8rem;
+        font-size: 0.8rem;
+      }
+      #gdpr-dismiss {
+        width: 100%;
+        text-align: center;
+        padding: 0.55rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
