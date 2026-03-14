@@ -665,6 +665,43 @@
     }
     @media (max-width: 640px) { .awards-tracks { grid-template-columns: 1fr; } }
 
+    /* ── DOWNLOADS ─────────────────────────────────── */
+    #downloads { background: var(--white); }
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .dl-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--light-bg);
+      border: 1px solid rgba(168,0,80,0.15);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      box-shadow: var(--shadow);
+    }
+    .dl-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--maroon);
+    }
+    .dl-icon {
+      font-size: 2.2rem;
+      color: var(--maroon);
+      flex-shrink: 0;
+    }
+    .dl-info { flex: 1; }
+    .dl-title { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.97rem; color: var(--dark-maroon); margin-bottom: 0.2rem; }
+    .dl-desc  { font-size: 0.82rem; color: var(--text-light); }
+    .dl-arrow { color: var(--maroon); font-size: 1rem; }
+
     /* ── REGISTRATION ────────────────────────────────── */
     #registration { background: #f9f5f7; }
     #registration .sec-label { color: var(--maroon); }
@@ -784,6 +821,7 @@
     <li><a href="#judging">Judging</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#registration">Register</a></li>
+    <li><a href="#downloads">Downloads</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <img src="images/uog-logo.png" alt="University of Galway" class="nav-logo">
@@ -1164,6 +1202,48 @@
         <div class="crit-desc">Does the team complete the demo and Q&amp;A within the allocated time slot?</div>
         <div class="bar-bg"><div class="bar" style="width:10%"></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  DOWNLOADS  ═════════════════════ -->
+<section id="downloads">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Resources</div>
+      <h2 class="sec-title">Hackathon <span>Downloads</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:var(--text-light);max-width:480px;margin:1rem auto 0;font-size:0.95rem;">Key documents for participants, judges, and guests.</p>
+    </div>
+    <div class="downloads-grid">
+
+      <a class="dl-card" href="docs/Hackathon-Abstracts-Booklet.pdf" target="_blank" rel="noopener">
+        <div class="dl-icon"><i class="fa-solid fa-book-open"></i></div>
+        <div class="dl-info">
+          <div class="dl-title">Hackathon Abstracts Booklet</div>
+          <div class="dl-desc">Team project summaries for all 19 competing teams</div>
+        </div>
+        <div class="dl-arrow"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+      </a>
+
+      <a class="dl-card" href="docs/Rubric-Guide-for-Judges.pdf" target="_blank" rel="noopener">
+        <div class="dl-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+        <div class="dl-info">
+          <div class="dl-title">Judging Rubric Guide</div>
+          <div class="dl-desc">Scoring criteria and guidance notes for judges</div>
+        </div>
+        <div class="dl-arrow"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+      </a>
+
+      <a class="dl-card" href="docs/Judge-Assessment-Form-Final.pdf" target="_blank" rel="noopener">
+        <div class="dl-icon"><i class="fa-solid fa-file-pen"></i></div>
+        <div class="dl-info">
+          <div class="dl-title">Judge Assessment Form</div>
+          <div class="dl-desc">Official scoring sheet for use during demonstrations</div>
+        </div>
+        <div class="dl-arrow"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+      </a>
+
     </div>
   </div>
 </section>
