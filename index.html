@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -803,6 +803,52 @@
       .criteria-grid { grid-template-columns: 1fr 1fr; }
       section { padding: 3.5rem 1.2rem; }
     }
+
+    /* ── VISITOR STATS ───────────────────────────────── */
+    #visitor-stats { background: var(--light-bg); }
+
+    .visitor-counter-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--maroon);
+    }
+    .visitor-eye-icon {
+      font-size: 2.4rem;
+      color: var(--maroon);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .visitor-count-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--maroon);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      min-height: 3.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .visitor-count-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+    }
+    .v-loading {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border: 2px solid rgba(168,0,80,0.3);
+      border-top-color: var(--maroon);
+      border-radius: 50%;
+      animation: vspin .7s linear infinite;
+      vertical-align: middle;
+    }
+    @keyframes vspin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -1405,6 +1451,24 @@
   </div>
 </section>
 
+<!-- ═══════════════════  VISITOR INSIGHTS  ═══════════════════ -->
+<section id="visitor-stats">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Live</div>
+      <h2 class="sec-title">Visitor <span>Insights</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div class="visitor-counter-box">
+        <i class="fa-solid fa-eye visitor-eye-icon"></i>
+        <div class="visitor-count-num" id="visit-count"><span class="v-loading"></span></div>
+        <div class="visitor-count-label">Total Page Views</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════  FOOTER  ═════════════════════════ -->
 <footer>
   <p><strong>CT101 Computing Systems Hackathon 2026</strong></p>
@@ -1412,6 +1476,10 @@
   <p style="margin-top:0.7rem;font-size:0.78rem;opacity:0.55;">
     Theme 2026: &ldquo;IoT is Bold&rdquo; &amp; &ldquo;Old is Gold&rdquo; &nbsp;&mdash;&nbsp;
     Website: <a href="https://waqarsqureshi.github.io/cshackathon" style="color:var(--gold);text-decoration:none;">waqarsqureshi.github.io/cshackathon</a>
+  </p>
+  <p style="margin-top:0.6rem;font-size:0.78rem;opacity:0.5;">
+    <i class="fa-solid fa-eye" style="margin-right:4px;"></i>
+    <span id="visit-count-footer">…</span> page views
   </p>
 </footer>
 
@@ -1464,6 +1532,30 @@
     document.getElementById('reg-' + panel).classList.add('active');
   }
 </script>
+
+<script>
+  /* ── Visitor counter (CounterAPI.dev — no personal data) ── */
+  (function () {
+    var COUNTER_URL = 'https://api.counterapi.dev/v1/cshackathon-uog-2026/pageviews/up';
+    fetch(COUNTER_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var count = Number(d.count);
+        var formatted = isNaN(count) ? '—' : count.toLocaleString();
+        var el = document.getElementById('visit-count');
+        var elF = document.getElementById('visit-count-footer');
+        if (el)  el.textContent  = formatted;
+        if (elF) elF.textContent = formatted;
+      })
+      .catch(function () {
+        var el = document.getElementById('visit-count');
+        var elF = document.getElementById('visit-count-footer');
+        if (el)  el.textContent  = '—';
+        if (elF) elF.textContent = '—';
+      });
+  })();
+</script>
+</div>
 
 </body>
 </html>
