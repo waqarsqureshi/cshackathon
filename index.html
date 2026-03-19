@@ -652,6 +652,7 @@
     }
     .medal-gold   { background: var(--gold); color: #5a3a00; }
     .medal-silver { background: #c0c0c0; color: #333; }
+    .medal-bronze { background: #cd7f32; color: #fff; }
     .award-team-name {
       font-size: 1.05rem;
       font-weight: 700;
@@ -1438,8 +1439,8 @@
       <div class="award-overall-card">
         <div class="award-overall-icon"><i class="fa-solid fa-trophy"></i></div>
         <div class="award-overall-label">Overall Winner</div>
-        <div class="award-overall-name" id="overall-winner">To Be Announced</div>
-        <div class="award-overall-track" id="overall-track">Results announced on March 18, 2026</div>
+        <div class="award-overall-name" id="overall-winner">Shebang</div>
+        <div class="award-overall-track" id="overall-track">CT101 Hackathon 2026 Champion &mdash; March 18, 2026</div>
       </div>
     </div>
 
@@ -1455,15 +1456,22 @@
         <div class="award-place-row">
           <div class="award-medal medal-gold"><i class="fa-solid fa-medal"></i></div>
           <div>
-            <div class="award-team-name" id="old-winner">To Be Announced</div>
+            <div class="award-team-name" id="old-winner">Pocket Aces</div>
             <div class="award-tba">Winner</div>
           </div>
         </div>
         <div class="award-place-row">
           <div class="award-medal medal-silver"><i class="fa-solid fa-medal"></i></div>
           <div>
-            <div class="award-team-name" id="old-runner">To Be Announced</div>
-            <div class="award-tba">Runner-up</div>
+            <div class="award-team-name" id="old-runner">HTK Studio</div>
+            <div class="award-tba">Runner-up 1</div>
+          </div>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-bronze"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="old-runner2">Lizards of the Roast</div>
+            <div class="award-tba">Runner-up 2</div>
           </div>
         </div>
       </div>
@@ -1477,15 +1485,22 @@
         <div class="award-place-row">
           <div class="award-medal medal-gold"><i class="fa-solid fa-medal"></i></div>
           <div>
-            <div class="award-team-name" id="iot-winner">To Be Announced</div>
+            <div class="award-team-name" id="iot-winner">BikePi</div>
             <div class="award-tba">Winner</div>
           </div>
         </div>
         <div class="award-place-row">
           <div class="award-medal medal-silver"><i class="fa-solid fa-medal"></i></div>
           <div>
-            <div class="award-team-name" id="iot-runner">To Be Announced</div>
-            <div class="award-tba">Runner-up</div>
+            <div class="award-team-name" id="iot-runner">De Biles</div>
+            <div class="award-tba">Runner-up 1</div>
+          </div>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-bronze"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="iot-runner2">Rubus Labs</div>
+            <div class="award-tba">Runner-up 2</div>
           </div>
         </div>
       </div>
@@ -1571,7 +1586,7 @@
     const diff = TARGET - new Date();
     if (diff <= 0) {
       document.getElementById('countdown').innerHTML =
-        '<div style="font-size:1.5rem;color:var(--gold);font-weight:800;padding:0.5rem 1rem;">🎉 The event is live right now!</div>';
+        '<div style="font-size:1.5rem;color:var(--gold);font-weight:800;padding:0.5rem 1rem;">� Congratulations to our Winners!</div>';
       return;
     }
     const d = Math.floor(diff / 86400000);
