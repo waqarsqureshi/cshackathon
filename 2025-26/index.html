@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CT101 Computing Hackathon 2026 – University of Galway</title>
+  <meta name="description" content="CT101 Computing Systems Hackathon 2026 – IoT is Bold & Old is Gold. Wednesday, March 18, 2026 at University of Galway.">
+  <!-- Open Graph / LinkedIn preview -->
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://waqarsqureshi.github.io/cshackathon/">
+  <meta property="og:title"        content="CT101 Hackathon 2026 — Winners Announced! 🏆">
+  <meta property="og:description"  content="Congratulations to our winners! Overall: Shebang | IoT is Bold: BikePi | Old is Gold: Pocket Aces — CT101 Computing Systems Hackathon, University of Galway.">
+  <meta property="og:image"        content="https://waqarsqureshi.github.io/cshackathon/2025-26/pics-blurred/award/IMAGE%201.jpeg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="900">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --maroon:      #A80050;   /* University of Galway Primary Maroon */
+      --dark-maroon: #84003D;   /* University of Galway Deep Maroon    */
+      --magenta:     #E6007E;   /* University of Galway Magenta Accent */
+      --gold:        #ffc72b;
+      --gold-dark:   #d4a017;
+      --white:       #ffffff;
+      --light-bg:    #f8f4f5;
+      --card-bg:     #ffffff;
+      --text:        #333333;
+      --text-light:  #666666;
+      --radius:      12px;
+      --shadow:      0 4px 20px rgba(168,0,80,0.13);
+      --shadow-lg:   0 8px 40px rgba(168,0,80,0.22);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Raleway', sans-serif;
+    }
+
+    body {
+      font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAVBAR ─────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #ffffff;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 90px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      border-bottom: 3px solid var(--maroon);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-brand img {
+      height: 72px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif;
+      color: var(--dark-maroon);
+      text-decoration: none;
+      padding: 0.6rem 0.45rem;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--maroon); background: rgba(168,0,80,0.08); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--maroon);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: var(--dark-maroon);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(132,0,61,0.08) 0%,
+        rgba(132,0,61,0.75) 60%,
+        rgba(132,0,61,0.97) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 2rem 3.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--gold);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.45);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+    }
+
+    /* Countdown */
+    .countdown-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(0,0,0,0.35);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 1rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 54px; }
+    .cd-val  { font-size: 2.6rem; font-weight: 800; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
+    .cd-lbl  { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+    .cd-sep  { font-size: 2.2rem; font-weight: 800; color: var(--gold); opacity: 0.45; align-self: flex-start; padding-top: 4px; }
+
+    /* Hero badges */
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .h-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,199,43,0.15);
+      border: 1px solid rgba(255,199,43,0.5);
+      color: var(--white);
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+    }
+    .h-badge strong { color: var(--gold); }
+
+    /* ── SHARED SECTION STYLES ───────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .sec-hdr { text-align: center; margin-bottom: 3rem; }
+    .sec-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .sec-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--dark-maroon);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .sec-title span { color: var(--maroon); }
+    .sec-div { width: 60px; height: 4px; background: var(--gold); border-radius: 2px; margin: 0 auto; }
+
+    /* ── ABOUT ───────────────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+    .about-text strong { color: var(--dark-maroon); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+
+    .stat-card {
+      background: var(--light-bg);
+      border-left: 4px solid var(--maroon);
+      border-radius: var(--radius);
+      padding: 1.2rem 1rem;
+      text-align: center;
+    }
+    .stat-val  { font-size: 2rem; font-weight: 800; color: var(--maroon); line-height: 1; }
+    .stat-lbl  { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
+
+    /* ── EVENT DETAILS ───────────────────────────────── */
+    #event { background: var(--maroon); }
+
+    #event .sec-label { color: var(--gold); }
+    #event .sec-title { color: var(--white); }
+    #event .sec-div   { background: var(--gold); }
+
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,199,43,0.4);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: transform .2s, background .2s;
+    }
+    .event-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.16); }
+
+    .ev-icon  { font-size: 2.6rem; margin-bottom: 0.6rem; }
+    .event-card h3 { color: var(--gold); font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .ev-venue { font-size: 1.35rem; font-weight: 700; color: var(--white); }
+    .ev-time  { font-size: 1.05rem; color: rgba(255,255,255,0.75); margin-top: 0.15rem; }
+    .ev-note  { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-top: 0.6rem; }
+
+    /* ── TIMELINE ────────────────────────────────────── */
+    #timeline { background: var(--light-bg); }
+
+    .timeline {
+      position: relative;
+      padding: 1rem 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--maroon), var(--gold));
+      transform: translateX(-50%);
+    }
+
+    .tl-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 2.5rem);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .tl-item:nth-child(even) {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 2.5rem);
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 1.4rem;
+      width: 18px; height: 18px;
+      background: var(--maroon);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .tl-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      box-shadow: var(--shadow);
+      max-width: 420px;
+      border-top: 4px solid var(--maroon);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .tl-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    .tl-phase {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--maroon);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .tl-card h3  { color: var(--dark-maroon); font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .tl-week     { color: var(--text-light); font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .tl-weight   {
+      display: inline-block;
+      background: var(--maroon);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+    }
+    .tl-card p   { color: var(--text-light); font-size: 0.93rem; margin-top: 0.6rem; }
+
+    /* ── TRACKS ──────────────────────────────────────── */
+    #tracks { background: var(--white); }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .track-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .track-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    .track-header {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+    }
+    .track-header.dark { background: linear-gradient(135deg, var(--dark-maroon) 0%, var(--maroon) 100%); }
+
+    .track-icon  { font-size: 3rem; margin-bottom: 0.4rem; }
+    .track-header h3 { color: var(--gold); font-size: 1.45rem; margin-bottom: 0.25rem; }
+    .track-header p  { color: rgba(255,255,255,0.78); font-size: 0.93rem; }
+
+    .track-body { background: var(--card-bg); padding: 2rem; }
+
+    .track-hw {
+      background: var(--light-bg);
+      border-left: 4px solid var(--gold);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.2rem;
+      font-size: 0.93rem;
+      color: var(--text);
+    }
+    .track-hw strong { color: var(--maroon); }
+
+    .track-list { list-style: none; }
+    .track-list li {
+      padding: 0.35rem 0;
+      color: var(--text-light);
+      font-size: 0.93rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .track-list li::before { content: '✓'; color: var(--maroon); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── TEAMS ───────────────────────────────────────── */
+    #teams { background: var(--light-bg); }
+
+    .filter-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--white);
+      border: 2px solid var(--maroon);
+      color: var(--maroon);
+      padding: 0.45rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all .2s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover { background: var(--maroon); color: var(--white); }
+
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border-top: 4px solid var(--maroon);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .team-card.hidden { display: none; }
+
+    .team-num {
+      width: 36px; height: 36px;
+      background: var(--maroon);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .team-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark-maroon);
+      line-height: 1.3;
+    }
+    .t-badge {
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+    .badge-iot {
+      background: rgba(168,0,80,0.09);
+      color: var(--maroon);
+      border: 1px solid rgba(168,0,80,0.3);
+    }
+    .badge-old {
+      background: rgba(255,199,43,0.18);
+      color: #7a5400;
+      border: 1px solid rgba(255,199,43,0.55);
+    }
+
+    /* ── JUDGING ─────────────────────────────────────── */
+    #judging { background: var(--white); }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .crit-card {
+      background: var(--light-bg);
+      border-radius: var(--radius);
+      padding: 2rem 1.4rem;
+      text-align: center;
+      border-top: 4px solid var(--maroon);
+      box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+    .crit-card:hover { transform: translateY(-4px); }
+
+    .crit-icon   { font-size: 2.4rem; margin-bottom: 0.8rem; }
+    .crit-pct    { font-size: 2.5rem; font-weight: 800; color: var(--maroon); line-height: 1; }
+    .crit-name   { font-size: 0.98rem; font-weight: 700; color: var(--dark-maroon); margin: 0.4rem 0; }
+    .crit-desc   { font-size: 0.83rem; color: var(--text-light); line-height: 1.5; }
+
+    .bar-bg {
+      width: 100%; height: 8px;
+      background: rgba(168,0,80,0.1);
+      border-radius: 4px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+    .bar { height: 100%; background: linear-gradient(90deg, var(--maroon), var(--gold)); border-radius: 4px; }
+
+    /* ── FAQ ─────────────────────────────────────────── */
+    #faq { background: var(--light-bg); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-bottom: 3rem;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      border-left: 4px solid var(--maroon);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .faq-item h4 { color: var(--dark-maroon); font-size: 0.97rem; margin-bottom: 0.45rem; }
+    .faq-item p  { color: var(--text-light); font-size: 0.92rem; line-height: 1.6; }
+
+    .contact-box {
+      background: var(--maroon);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .contact-box h3 { color: var(--gold); font-size: 1.45rem; margin-bottom: 1.2rem; }
+    .contact-box p  { color: rgba(255,255,255,0.82); margin-bottom: 0.4rem; }
+    .contact-box a  { color: var(--gold); text-decoration: none; }
+    .contact-box a:hover { text-decoration: underline; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+      text-align: left;
+    }
+    .contact-person {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,199,43,0.35);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+    .contact-person .role  { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 0.4rem; }
+    .contact-person .name  { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .contact-person .dept  { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .contact-person a      { font-size: 0.85rem; color: var(--gold); text-decoration: none; word-break: break-all; }
+    .contact-person a:hover { text-decoration: underline; }
+
+    /* ── AWARDS ───────────────────────────────────────── */
+    #awards { background: var(--dark-maroon); }
+    #awards .sec-label { color: var(--gold); }
+    #awards .sec-title { color: var(--white); }
+    #awards .sec-div   { background: var(--gold); }
+
+    .awards-overall {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .award-overall-card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, rgba(255,199,43,0.18), rgba(255,199,43,0.06));
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 2.5rem 3.5rem;
+      box-shadow: 0 0 40px rgba(255,199,43,0.2);
+    }
+    .award-overall-icon {
+      font-size: 3.2rem;
+      color: var(--gold);
+    }
+    .award-overall-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 700;
+    }
+    .award-overall-name {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--gold);
+      min-width: 260px;
+      text-align: center;
+    }
+    .award-overall-track {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .awards-tracks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .award-track-group {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,199,43,0.25);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .award-track-header {
+      background: rgba(255,199,43,0.15);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,199,43,0.2);
+    }
+    .award-track-header i  { font-size: 1.2rem; color: var(--gold); }
+    .award-track-header h3 { color: var(--gold); font-size: 1.05rem; margin: 0; }
+    .award-place-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .award-place-row:last-child { border-bottom: none; }
+    .award-medal {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    /* ── GALLERY ──────────────────────────────────── */
+    #gallery { background: var(--light-bg); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: var(--shadow-lg); }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.2rem; right: 1.5rem;
+      background: none; border: none;
+      color: #fff; font-size: 2.2rem;
+      cursor: pointer; line-height: 1;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      border: none; color: #fff;
+      font-size: 2rem; padding: 0.6rem 1rem;
+      cursor: pointer; border-radius: 6px;
+      transition: background .2s;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-counter {
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .medal-gold   { background: var(--gold); color: #5a3a00; }
+    .medal-silver { background: #c0c0c0; color: #333; }
+    .medal-bronze { background: #cd7f32; color: #fff; }
+    .award-team-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .award-tba {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+    @media (max-width: 640px) { .awards-tracks { grid-template-columns: 1fr; } }
+
+    /* ── DOWNLOADS ─────────────────────────────────── */
+    #downloads { background: var(--white); }
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .dl-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--light-bg);
+      border: 1px solid rgba(168,0,80,0.15);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      box-shadow: var(--shadow);
+    }
+    .dl-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--maroon);
+    }
+    .dl-icon {
+      font-size: 2.2rem;
+      color: var(--maroon);
+      flex-shrink: 0;
+    }
+    .dl-info { flex: 1; }
+    .dl-title { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.97rem; color: var(--dark-maroon); margin-bottom: 0.2rem; }
+    .dl-desc  { font-size: 0.82rem; color: var(--text-light); }
+    .dl-arrow { color: var(--maroon); font-size: 1rem; }
+
+    /* ── REGISTRATION ────────────────────────────────── */
+    #registration { background: #f9f5f7; }
+    #registration .sec-label { color: var(--maroon); }
+    #registration .sec-title { color: var(--dark-maroon); }
+    .reg-tabs {
+      display: flex;
+      gap: 0;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .reg-tab-btn {
+      flex: 1;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 700;
+      background: #e8dce3;
+      color: var(--maroon);
+      transition: background 0.2s, color 0.2s;
+    }
+    .reg-tab-btn.active {
+      background: var(--maroon);
+      color: #fff;
+    }
+    .reg-panels {
+      max-width: 540px;
+      margin: 0 auto;
+      background: #fff;
+      border: 2px solid var(--maroon);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+    }
+    .reg-panel { display: none; padding: 2.5rem 2rem; text-align: center; }
+    .reg-panel.active { display: block; }
+    .reg-closed-icon { font-size: 2.5rem; color: var(--maroon); margin-bottom: 1rem; }
+    .reg-closed-title { font-size: 1.25rem; font-weight: 800; color: var(--dark-maroon); margin-bottom: 0.5rem; }
+    .reg-closed-msg { color: #666; font-size: 0.92rem; line-height: 1.6; }
+    .reg-closed-badge {
+      display: inline-block;
+      background: #fce8ef;
+      color: var(--maroon);
+      border: 1px solid #f0b8cc;
+      border-radius: 20px;
+      padding: 0.35rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--dark-maroon);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2.2rem 1rem;
+      font-size: 0.88rem;
+    }
+    footer strong { color: var(--gold); }
+    footer p { margin: 0.3rem 0; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 780px) {
+      /* Compact navbar on mobile */
+      .navbar {
+        min-height: 60px;
+        padding: 0 1rem;
+      }
+      .nav-brand img {
+        height: 44px;
+      }
+      .nav-toggle {
+        font-size: 1.4rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; left: 0; right: 0;
+        background: var(--dark-maroon);
+        padding: 0.4rem 0.6rem 0.8rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        z-index: 999;
+      }
+      .nav-links.open  { display: flex; }
+      .nav-toggle      { display: block; }
+
+      /* Fix: override desktop text colour so links are visible on dark background */
+      .nav-links li    { width: 100%; }
+      .nav-links a {
+        color: var(--white);
+        padding: 0.6rem 0.9rem;
+        font-size: 0.88rem;
+        border-radius: 6px;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+      .nav-links a:hover {
+        color: var(--gold);
+        background: rgba(255,255,255,0.10);
+      }
+
+      .about-grid      { grid-template-columns: 1fr; gap: 2rem; }
+      .tracks-grid     { grid-template-columns: 1fr; }
+      .faq-grid        { grid-template-columns: 1fr; }
+
+      .timeline::before { left: 16px; }
+      .tl-item,
+      .tl-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-right: 0;
+        padding-left: 44px;
+      }
+      .tl-dot { left: 16px; }
+      .tl-card { max-width: 100%; }
+
+      .countdown-wrap  { gap: 0.6rem; padding: 0.9rem 1.2rem; }
+      .cd-val          { font-size: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .event-cards { grid-template-columns: 1fr; }
+      .criteria-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 3.5rem 1.2rem; }
+    }
+
+    /* ── VISITOR STATS ───────────────────────────────── */
+    #visitor-stats { background: var(--light-bg); }
+
+    .visitor-counter-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--maroon);
+    }
+    .visitor-eye-icon {
+      font-size: 2.4rem;
+      color: var(--maroon);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .visitor-count-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--maroon);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      min-height: 3.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .visitor-count-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+    }
+    .v-loading {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border: 2px solid rgba(168,0,80,0.3);
+      border-top-color: var(--maroon);
+      border-radius: 50%;
+      animation: vspin .7s linear infinite;
+      vertical-align: middle;
+    }
+    @keyframes vspin { to { transform: rotate(360deg); } }
+
+    /* ── GDPR NOTICE BANNER ──────────────────────────── */
+    #gdpr-notice {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.88);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.35);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    #gdpr-notice.hidden { display: none; }
+    #gdpr-notice a { color: var(--gold); text-decoration: underline; }
+    #gdpr-dismiss {
+      padding: 0.4rem 1.4rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--maroon);
+      color: #fff;
+      flex-shrink: 0;
+      transition: opacity .2s;
+    }
+    #gdpr-dismiss:hover { opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      #gdpr-notice {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.9rem 1rem;
+        padding-bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
+        gap: 0.8rem;
+        font-size: 0.82rem;
+      }
+      #gdpr-dismiss {
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════  NAVBAR  ═══════════════════════════ -->
+<nav class="navbar" id="top">
+  <a class="nav-brand" href="#top"><img src="images/cs-logo.png" alt="University of Galway – School of Computer Science"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#event">Event</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#tracks">Tracks</a></li>
+    <li><a href="#teams">Teams</a></li>
+    <li><a href="#judging">Judging</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#registration">Register</a></li>
+    <li><a href="#downloads">Downloads</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════  HERO  ════════════════════════════ -->
+<div class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">University of Galway &middot; School of Computer Science</p>
+    <h1 class="hero-title">Computing Hackathon 2026</h1>
+    <p class="hero-sub">Innovation, Coding, and Creative Problem‑Solving</p>
+
+    <div class="countdown-wrap" id="countdown">
+      <div class="cd-unit"><div class="cd-val" id="cd-days">00</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-hours">00</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-mins">00</div><div class="cd-lbl">Minutes</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-secs">00</div><div class="cd-lbl">Seconds</div></div>
+    </div>
+
+    <div class="hero-badges">
+      <span class="h-badge">📅 <strong>Wednesday, March 18, 2026</strong></span>
+      <span class="h-badge">🏛️ Demo &mdash; <strong>CSB 2015 &amp; CSB 2014</strong> &nbsp;3:00–6:00 PM</span>
+      <span class="h-badge">🏆 Awards &mdash; <strong>SULT, Corrib Room</strong> &nbsp;6:00–7:00 PM</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════  ABOUT  ══════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">About the Event</div>
+      <h2 class="sec-title">What is the <span>Computing Hackathon?</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>The Computing Hackathon is a <strong>team‑based project challenge</strong> that runs
+           across 12 weeks of the semester for GY350 BCT students taking Computing Systems CT101.</p>
+        <p> Student teams choose one of two themes and build a real,
+           working system using university hardware.</p>
+        <p>Pick <strong>IoT is Bold</strong> to create interactive, sensor-driven projects with a
+           Raspberry Pi 4 and Sense HAT — or choose <strong>Old is Gold</strong> to deploy and
+           manage services on legacy PC server infrastructure.</p>
+        <p>Teams deliver a <strong>live public demo</strong> to a panel of judges at the semester's
+           flagship showcase event, demonstrating technical depth, teamwork, and creative
+           problem‑solving.</p>
+        <p>Module coordinator:&nbsp;<strong>Dr. Waqar Shahid Qureshi</strong>,
+           School of Computer Science, University of Galway.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-val">15%</div>
+          <div class="stat-lbl">Module Grade Weight</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">12</div>
+          <div class="stat-lbl">Weeks Duration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  EVENT  ══════════════════════════ -->
+<section id="event">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Event Details</div>
+      <h2 class="sec-title">Wednesday, March 18, 2026</h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="event-cards">
+      <div class="event-card">
+        <div class="ev-icon">💻</div>
+        <h3>Live Demonstrations</h3>
+        <div class="ev-venue">CSB 2015 &amp; CSB 2014</div>
+        <div class="ev-time">3:00 PM – 6:00 PM</div>
+        <div class="ev-note">Teams demo their working systems to the judging panel</div>
+      </div>
+      <div class="event-card">
+        <div class="ev-icon">🏆</div>
+        <h3>Awards Ceremony</h3>
+        <div class="ev-venue">SULT, Corrib Room</div>
+        <div class="ev-time">6:00 PM – 7:00 PM</div>
+        <div class="ev-note">Winners announced and prizes awarded — all welcome</div>
+      </div>
+      <div class="event-card">
+        <div class="ev-icon">📋</div>
+        <h3>What to Bring</h3>
+        <div class="ev-venue" style="font-size:1rem;">Your Project + Demo</div>
+        <div class="ev-time" style="font-size:0.92rem;">Hardware · Demo · Report</div>
+        <div class="ev-note">Have your system running and set up before 3:00 PM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  TIMELINE  ════════════════════════ -->
+<section id="timeline">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Assessment Phases</div>
+      <h2 class="sec-title">Hackathon <span>Timeline</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-phase">Phase 1</div>
+          <h3>Project Abstract</h3>
+          <div class="tl-week">📅 Weeks 1–4</div>
+          <span class="tl-weight">10% of Hackathon Grade</span>
+          <p>A one‑page abstract describing your team's chosen theme, proposed system, and high-level project plan.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-phase">Phase 2</div>
+          <h3>Functional Requirements Document</h3>
+          <div class="tl-week">📅 Weeks 6–7</div>
+          <span class="tl-weight">25% of Hackathon Grade</span>
+          <p>A 4–5 page FRD detailing system requirements, architecture decisions, and your implementation plan.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card" style="border-top-color: var(--gold);">
+          <div class="tl-phase" style="color:var(--gold-dark);">Phase 3 ⭐ — Demo Day</div>
+          <h3>Live Presentation &amp; Demonstration</h3>
+          <div class="tl-week">📅 Week 10 — Wednesday, March 18, 2026</div>
+          <span class="tl-weight" style="background:var(--gold-dark);">35% of Hackathon Grade</span>
+          <p>Live demo to judges in CSB 2015/2014. Show your working system and present clearly within your time slot.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-phase">Phase 4</div>
+          <h3>Final Design Document</h3>
+          <div class="tl-week">📅 Week 14</div>
+          <span class="tl-weight">30% of Hackathon Grade</span>
+          <p>A 4–5 page final report covering architecture, implementation details, testing results, and reflection.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  TRACKS  ═════════════════════════ -->
+<section id="tracks">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Choose Your Challenge</div>
+      <h2 class="sec-title">Two <span>Tracks</span>, Two Technologies</h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="tracks-grid">
+
+      <!-- IoT is Bold -->
+      <div class="track-card">
+        <div class="track-header">
+          <div class="track-icon">🍓</div>
+          <h3>IoT is Bold</h3>
+          <p>Embedded Systems · Sensors · Real‑Time Data</p>
+        </div>
+        <div class="track-body">
+          <div class="track-hw">
+            <strong>Hardware Kit:</strong>&nbsp; Raspberry Pi 4 · Sense HAT · Camera Module v3 · USB‑C Power Supply
+          </div>
+          <ul class="track-list">
+            <li>8×8 RGB LED matrix display output</li>
+            <li>Temperature, humidity &amp; pressure sensors</li>
+            <li>Accelerometer, gyroscope &amp; magnetometer</li>
+            <li>12MP camera with 1080p video recording</li>
+            <li>5‑button mini joystick for interaction</li>
+            <li>Wi‑Fi &amp; Bluetooth connectivity</li>
+            <li>Categories: environmental monitoring, motion detection, interactive display, data logging</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Old is Gold -->
+      <div class="track-card">
+        <div class="track-header dark">
+          <div class="track-icon">🖥️</div>
+          <h3>Old is Gold</h3>
+          <p>Legacy Servers · Web Services · Infrastructure</p>
+        </div>
+        <div class="track-body">
+          <div class="track-hw" style="border-left-color:var(--maroon);">
+            <strong>Hardware:</strong>&nbsp; Legacy Desktop PC · HDD/SSD storage · Ethernet networking · 20 systems available
+          </div>
+          <ul class="track-list">
+            <li>Static or dynamic web server</li>
+            <li>Database‑driven application</li>
+            <li>File sharing or media server</li>
+            <li>Real‑time communication server</li>
+            <li>Game or application server</li>
+            <li>System monitoring dashboard</li>
+            <li>Flexible network infrastructure on request</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  TEAMS  ══════════════════════════ -->
+<section id="teams">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">The Competitors</div>
+      <h2 class="sec-title">Competing <span>Teams</span></h2>
+      <div class="sec-div"></div>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterTeams('all', this)">All Teams (19)</button>
+      <button class="filter-btn" onclick="filterTeams('iot', this)">🍓 IoT is Bold (4)</button>
+      <button class="filter-btn" onclick="filterTeams('old', this)">🖥️ Old is Gold (15)</button>
+    </div>
+
+    <div class="teams-grid" id="teamsGrid">
+      <div class="team-card" data-track="iot">
+        <div class="team-num">2</div>
+        <div class="team-name">Athlone</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="iot">
+        <div class="team-num">12</div>
+        <div class="team-name">Rubus Labs</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="iot">
+        <div class="team-num">14</div>
+        <div class="team-name">BikePi</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="iot">
+        <div class="team-num">17</div>
+        <div class="team-name">De Biles</div>
+        <span class="t-badge badge-iot">🍓 IoT is Bold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">1</div>
+        <div class="team-name">Error But Run</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">3</div>
+        <div class="team-name">FireTech Innovators</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">4</div>
+        <div class="team-name">jakub</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">5</div>
+        <div class="team-name">JackAces</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">6</div>
+        <div class="team-name">The Phoques</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">7</div>
+        <div class="team-name">Pints++</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">8a</div>
+        <div class="team-name">Lizards of the Roast</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">8b</div>
+        <div class="team-name">Lizards of the Roast</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">9</div>
+        <div class="team-name">Hackathon Tonight, Queen?</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">10</div>
+        <div class="team-name">Shebang</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">11</div>
+        <div class="team-name">The Burrito</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">13</div>
+        <div class="team-name">Paranoid Androids</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">15</div>
+        <div class="team-name">8Ball</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">16</div>
+        <div class="team-name">Pocket Aces</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">18</div>
+        <div class="team-name">HTK Studio</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+      <div class="team-card" data-track="old">
+        <div class="team-num">19</div>
+        <div class="team-name">Golden Archive</div>
+        <span class="t-badge badge-old">🖥️ Old is Gold</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  JUDGING  ════════════════════════ -->
+<section id="judging">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Assessment</div>
+      <h2 class="sec-title">Judging <span>Criteria</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:var(--text-light);max-width:540px;margin:1rem auto 0;font-size:0.97rem;">
+        All presentations are assessed by a panel of judges using the following weighted criteria:
+      </p>
+    </div>
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-icon">🎯</div>
+        <div class="crit-pct">40%</div>
+        <div class="crit-name">Demonstration Quality</div>
+        <div class="crit-desc">How well does the working system perform? Does it meet the stated project requirements?</div>
+        <div class="bar-bg"><div class="bar" style="width:40%"></div></div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">🗣️</div>
+        <div class="crit-pct">30%</div>
+        <div class="crit-name">Presentation Clarity</div>
+        <div class="crit-desc">Is the project communicated clearly? Are visuals and explanations easy to follow?</div>
+        <div class="bar-bg"><div class="bar" style="width:30%"></div></div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">⚙️</div>
+        <div class="crit-pct">20%</div>
+        <div class="crit-name">Technical Communication</div>
+        <div class="crit-desc">Can the team explain their technical decisions, architecture, and challenges clearly?</div>
+        <div class="bar-bg"><div class="bar" style="width:20%"></div></div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-icon">⏱️</div>
+        <div class="crit-pct">10%</div>
+        <div class="crit-name">Time Management</div>
+        <div class="crit-desc">Does the team complete the demo and Q&amp;A within the allocated time slot?</div>
+        <div class="bar-bg"><div class="bar" style="width:10%"></div></div>
+      </div>
+    </div>
+
+    <!-- External Judges -->
+    <div style="margin-top:3rem;">
+      <h3 style="text-align:center;font-family:'Raleway',sans-serif;color:var(--dark-maroon);font-size:1.25rem;margin-bottom:0.4rem;font-weight:800;">Meet the Judges</h3>
+      <p style="text-align:center;color:var(--text-light);font-size:0.92rem;margin-bottom:1.8rem;">Industry professionals who assessed the CT101 Hackathon 2026</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;max-width:820px;margin:0 auto;">
+        <div style="background:var(--light-bg);border:1px solid rgba(168,0,80,0.15);border-top:4px solid var(--maroon);border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">👤</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:800;color:var(--dark-maroon);font-size:1.05rem;">Joe Desbonnet</div>
+          <div style="color:var(--maroon);font-weight:600;font-size:0.88rem;margin-top:0.3rem;">Senus</div>
+        </div>
+        <div style="background:var(--light-bg);border:1px solid rgba(168,0,80,0.15);border-top:4px solid var(--maroon);border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">👤</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:800;color:var(--dark-maroon);font-size:1.05rem;">Nigel Burke</div>
+          <div style="color:var(--maroon);font-weight:600;font-size:0.88rem;margin-top:0.3rem;">Boston Scientific</div>
+        </div>
+        <div style="background:var(--light-bg);border:1px solid rgba(168,0,80,0.15);border-top:4px solid var(--maroon);border-radius:var(--radius);padding:1.5rem 1.2rem;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">👤</div>
+          <div style="font-family:'Raleway',sans-serif;font-weight:800;color:var(--dark-maroon);font-size:1.05rem;">Ben Steele</div>
+          <div style="color:var(--maroon);font-weight:600;font-size:0.88rem;margin-top:0.3rem;">Liberty Mutual</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  DOWNLOADS  ═════════════════════ -->
+<section id="downloads">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Resources</div>
+      <h2 class="sec-title">Hackathon <span>Downloads</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:var(--text-light);max-width:480px;margin:1rem auto 0;font-size:0.95rem;">Key documents for participants, judges, and guests.</p>
+    </div>
+    <div class="downloads-grid">
+
+      <a class="dl-card" href="docs/Rubric-Guide-for-Judges.pdf" target="_blank" rel="noopener">
+        <div class="dl-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+        <div class="dl-info">
+          <div class="dl-title">Judging Rubric Guide</div>
+          <div class="dl-desc">Scoring criteria and guidance notes for judges</div>
+        </div>
+        <div class="dl-arrow"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+      </a>
+
+      <a class="dl-card" href="docs/Judge-Assessment-Form-Final.pdf" target="_blank" rel="noopener">
+        <div class="dl-icon"><i class="fa-solid fa-file-pen"></i></div>
+        <div class="dl-info">
+          <div class="dl-title">Judge Assessment Form</div>
+          <div class="dl-desc">Official scoring sheet for use during demonstrations</div>
+        </div>
+        <div class="dl-arrow"><i class="fa-solid fa-arrow-down-to-bracket"></i></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  FAQ  ════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">FAQ &amp; Contact</div>
+      <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>❓ When is hardware checked out and returned?</h4>
+        <p>Hardware checkout is mid-Week 8. All kits (Raspberry Pi &amp; Legacy PCs) must be returned by the end of Week 12.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ Can we switch tracks mid-semester?</h4>
+        <p>No. Track selection is final after Phase 1. Hardware is limited (max 15 teams per theme), so commit to your chosen track from the start.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ What does Demo Day (Phase 3) involve?</h4>
+        <p>Teams set up in CSB 2015 on designated tables. Judges visit each station and score based on the four criteria. Be set up and ready before 3:00 PM.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ Does the entire team need to present?</h4>
+        <p>Yes. All team members are expected to take part in the live demo. Judges may direct questions to any team member.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ What if our system isn't fully working on demo day?</h4>
+        <p>Marks will be awarded based on what works and effort. Show what works, explain challenges clearly — your Technical Communication and Presentation scores still count for 50%.</p>
+      </div>
+      <div class="faq-item">
+        <h4>❓ Where is the awards ceremony?</h4>
+        <p>SULT, Corrib Room from 6:00 PM to 7:00 PM on Wednesday, March 18, 2026. All teams and guests are welcome. Prior registration is required.</p>
+      </div>
+    </div>
+    <div class="contact-box">
+      <h3>📧 Get in Touch</h3>
+      <div class="contact-grid">
+        <div class="contact-person">
+          <div class="role">Module Coordinator</div>
+          <div class="name">Dr. Waqar Shahid Qureshi</div>
+          <div class="dept">School of Computer Science &nbsp;·&nbsp; University of Galway</div>
+          <a href="mailto:waqarshahid.qureshi@universityofgalway.ie">waqarshahid.qureshi@universityofgalway.ie</a>
+        </div>
+        <div class="contact-person">
+          <div class="role">Programme Coordinator</div>
+          <div class="name">Dr. Colm O' Riordan</div>
+          <div class="dept">School of Computer Science &nbsp;·&nbsp; University of Galway</div>
+          <a href="mailto:colm.oriordan@universityofgalway.ie">colm.oriordan@universityofgalway.ie</a>
+        </div>
+        <div class="contact-person">
+          <div class="role">Head of School</div>
+          <div class="name">Dr. Enda Howley</div>
+          <div class="dept">School of Computer Science &nbsp;·&nbsp; University of Galway</div>
+          <a href="mailto:ehowley@universityofgalway.ie">ehowley@universityofgalway.ie</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  AWARDS  ════════════════════════ -->
+<section id="awards">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Results</div>
+      <h2 class="sec-title">Winners &amp; <span style="color:var(--gold)">Awards</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:rgba(255,255,255,0.6);max-width:520px;margin:1rem auto 0;font-size:0.97rem;">Presented at the Awards Ceremony &mdash; SULT, Corrib Room &mdash; 6:00 PM, March 18, 2026</p>
+    </div>
+
+    <!-- Overall Winner -->
+    <div class="awards-overall">
+      <div class="award-overall-card">
+        <div class="award-overall-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div class="award-overall-label">Overall Winner</div>
+        <div class="award-overall-name" id="overall-winner">Shebang</div>
+        <div class="award-overall-track" id="overall-track">CT101 Hackathon 2026 Champion &mdash; March 18, 2026</div>
+      </div>
+    </div>
+
+    <!-- Track Winners -->
+    <div class="awards-tracks">
+
+      <!-- Old is Gold -->
+      <div class="award-track-group">
+        <div class="award-track-header">
+          <i class="fa-solid fa-server"></i>
+          <h3>Old is Gold</h3>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-gold"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="old-winner">Pocket Aces</div>
+            <div class="award-tba">Winner</div>
+          </div>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-silver"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="old-runner">HTK Studio</div>
+            <div class="award-tba">Runner-up 1</div>
+          </div>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-bronze"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="old-runner2">Lizards of the Roast</div>
+            <div class="award-tba">Runner-up 2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IoT is Bold -->
+      <div class="award-track-group">
+        <div class="award-track-header">
+          <i class="fa-brands fa-raspberry-pi"></i>
+          <h3>IoT is Bold</h3>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-gold"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="iot-winner">BikePi</div>
+            <div class="award-tba">Winner</div>
+          </div>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-silver"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="iot-runner">Rubus Labs</div>
+            <div class="award-tba">Runner-up 1</div>
+          </div>
+        </div>
+        <div class="award-place-row">
+          <div class="award-medal medal-bronze"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <div class="award-team-name" id="iot-runner2">De Biles</div>
+            <div class="award-tba">Runner-up 2</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .awards-tracks -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════  GALLERY  ═══════════════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Hackathon Day</div>
+      <h2 class="sec-title">Photo <span>Gallery</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:var(--text-light);max-width:520px;margin:1rem auto 0;font-size:0.95rem;">Highlights from CT101 Hackathon 2026 &mdash; March 18, 2026. Faces have been anonymised.</p>
+    </div>
+    <!-- Hackathon Day Photos -->
+    <h3 style="text-align:center;font-family:'Raleway',sans-serif;color:var(--dark-maroon);font-size:1.3rem;margin-bottom:1rem;">📸 Hackathon Day</h3>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" onclick="openLightbox(0)"><img src="pics-blurred/20260318_153750.jpg" alt="Hackathon photo 1" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(1)"><img src="pics-blurred/20260318_153757.jpg" alt="Hackathon photo 2" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(2)"><img src="pics-blurred/20260318_153803.jpg" alt="Hackathon photo 3" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(3)"><img src="pics-blurred/20260318_153807.jpg" alt="Hackathon photo 4" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(4)"><img src="pics-blurred/20260318_161414.jpg" alt="Hackathon photo 5" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(5)"><img src="pics-blurred/20260318_161417.jpg" alt="Hackathon photo 6" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(6)"><img src="pics-blurred/20260318_163410.jpg" alt="Hackathon photo 7" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(7)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.49 (1).jpeg" alt="Hackathon photo 8" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(8)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.49 (2).jpeg" alt="Hackathon photo 9" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(9)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.49.jpeg" alt="Hackathon photo 10" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(10)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.50 (1).jpeg" alt="Hackathon photo 11" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(11)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.50 (2).jpeg" alt="Hackathon photo 12" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(12)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.50 (3).jpeg" alt="Hackathon photo 13" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(13)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.50.jpeg" alt="Hackathon photo 14" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(14)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.51 (1).jpeg" alt="Hackathon photo 15" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(15)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.51 (2).jpeg" alt="Hackathon photo 16" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(16)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.51.jpeg" alt="Hackathon photo 17" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(17)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.52 (1).jpeg" alt="Hackathon photo 18" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(18)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.52 (2).jpeg" alt="Hackathon photo 19" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(19)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.52 (3).jpeg" alt="Hackathon photo 20" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(20)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.52 (4).jpeg" alt="Hackathon photo 21" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(21)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.52 (5).jpeg" alt="Hackathon photo 22" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(22)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.52.jpeg" alt="Hackathon photo 23" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(23)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.53 (1).jpeg" alt="Hackathon photo 24" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(24)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.53 (2).jpeg" alt="Hackathon photo 25" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(25)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.53.jpeg" alt="Hackathon photo 26" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(26)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.54 (1).jpeg" alt="Hackathon photo 27" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(27)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.54 (2).jpeg" alt="Hackathon photo 28" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(28)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.54 (3).jpeg" alt="Hackathon photo 29" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(29)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.54.jpeg" alt="Hackathon photo 30" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(30)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.55.jpeg" alt="Hackathon photo 31" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(31)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.56.jpeg" alt="Hackathon photo 32" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(32)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.57 (1).jpeg" alt="Hackathon photo 33" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(33)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.57.jpeg" alt="Hackathon photo 34" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightbox(34)"><img src="pics-blurred/WhatsApp Image 2026-03-19 at 08.31.59.jpeg" alt="Hackathon photo 35" loading="lazy"></div>
+    </div>
+
+    <!-- Awards Ceremony Photos -->
+    <h3 style="text-align:center;font-family:'Raleway',sans-serif;color:var(--dark-maroon);font-size:1.3rem;margin-top:3rem;margin-bottom:1rem;">🏆 Awards Ceremony Highlights</h3>
+    <div class="gallery-grid" id="galleryAward">
+      <div class="gallery-item" onclick="openLightboxAward(0)"><img src="pics-blurred/award/IMAGE 1.jpeg" alt="Awards ceremony 1" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(1)"><img src="pics-blurred/award/IMAGE 2.jpeg" alt="Awards ceremony 2" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(2)"><img src="pics-blurred/award/IMAGE 3.jpeg" alt="Awards ceremony 3" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(3)"><img src="pics-blurred/award/IMAGE 4.jpeg" alt="Awards ceremony 4" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(4)"><img src="pics-blurred/award/IMAGE 5.jpeg" alt="Awards ceremony 5" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(5)"><img src="pics-blurred/award/IMAGE 6.jpeg" alt="Awards ceremony 6" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(6)"><img src="pics-blurred/award/Image 01.jpeg" alt="Awards ceremony 7" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(7)"><img src="pics-blurred/award/Image 02.jpeg" alt="Awards ceremony 8" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(8)"><img src="pics-blurred/award/Image 03.jpeg" alt="Awards ceremony 9" loading="lazy"></div>
+      <div class="gallery-item" onclick="openLightboxAward(9)"><img src="pics-blurred/award/Image 04.jpeg" alt="Awards ceremony 10" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="moveLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="moveLightbox(1)">&#8250;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- ═══════════════════════════  REGISTRATION  ═══════════════════ -->
+<section id="registration">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Participation</div>
+      <h2 class="sec-title">Event <span>Registration</span></h2>
+      <div class="sec-div"></div>
+      <p style="color:#555;max-width:480px;margin:1rem auto 0;font-size:0.95rem;">Registration for CT101 Hackathon 2026 is now closed.</p>
+    </div>
+
+    <!-- Tab buttons -->
+    <div class="reg-tabs">
+      <button class="reg-tab-btn active" onclick="switchRegTab(event,'students')">Student Registration</button>
+      <button class="reg-tab-btn" onclick="switchRegTab(event,'guests')">Guest / Staff Registration</button>
+    </div>
+
+    <!-- Panels -->
+    <div class="reg-panels">
+
+      <div class="reg-panel active" id="reg-students">
+        <div class="reg-closed-icon"><i class="fa-solid fa-lock"></i></div>
+        <div class="reg-closed-badge">Closed</div>
+        <div class="reg-closed-title">Student Registration Closed</div>
+        <div class="reg-closed-msg">Registration for CT101 students has closed.<br>All team assignments were confirmed by your module coordinator.<br>If you have a query please email <a href="mailto:waqarshahid.qureshi@universityofgalway.ie" style="color:var(--maroon);font-weight:600;">waqarshahid.qureshi@universityofgalway.ie</a>.</div>
+      </div>
+
+      <div class="reg-panel" id="reg-guests">
+        <div class="reg-closed-icon"><i class="fa-solid fa-lock"></i></div>
+        <div class="reg-closed-badge">Closed</div>
+        <div class="reg-closed-title">Guest &amp; Staff Registration Closed</div>
+        <div class="reg-closed-msg">Guest and staff attendance registration has closed.<br>For last-minute attendance queries please contact the organising team at <a href="mailto:waqarshahid.qureshi@universityofgalway.ie" style="color:var(--maroon);font-weight:600;">waqarshahid.qureshi@universityofgalway.ie</a>.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════  VISITOR INSIGHTS  ═══════════════════ -->
+<section id="visitor-stats">
+  <div class="container">
+    <div class="sec-hdr">
+      <div class="sec-label">Live</div>
+      <h2 class="sec-title">Visitor <span>Insights</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div class="visitor-counter-box">
+        <i class="fa-solid fa-eye visitor-eye-icon"></i>
+        <div class="visitor-count-num" id="visit-count"><span class="v-loading"></span></div>
+        <div class="visitor-count-label">Total Page Views</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════  FOOTER  ═════════════════════════ -->
+<footer>
+  <p><strong>CT101 Computing Systems Hackathon 2026</strong></p>
+  <p>School of Computer Science &nbsp;·&nbsp; University of Galway</p>
+  <p style="margin-top:0.7rem;font-size:0.78rem;opacity:0.55;">
+    Theme 2026: &ldquo;IoT is Bold&rdquo; &amp; &ldquo;Old is Gold&rdquo; &nbsp;&mdash;&nbsp;
+    Website: <a href="https://waqarsqureshi.github.io/cshackathon" style="color:var(--gold);text-decoration:none;">waqarsqureshi.github.io/cshackathon</a>
+  </p>
+  <p style="margin-top:0.6rem;font-size:0.78rem;opacity:0.5;">
+    <i class="fa-solid fa-eye" style="margin-right:4px;"></i>
+    <span id="visit-count-footer">…</span> page views
+  </p>
+</footer>
+
+<script>
+  /* ── Countdown ───────────────────────────────────── */
+  const TARGET = new Date('2026-03-18T15:00:00');
+
+  function tick() {
+    const diff = TARGET - new Date();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<div style="font-size:1.5rem;color:var(--gold);font-weight:800;padding:0.5rem 1rem;">� Congratulations to our Winners!</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cd-days').textContent  = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ── Mobile nav ──────────────────────────────────── */
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () =>
+      document.getElementById('navLinks').classList.remove('open')));
+
+  /* ── Team filter ─────────────────────────────────── */
+  function filterTeams(track, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.team-card').forEach(card => {
+      card.classList.toggle('hidden', track !== 'all' && card.dataset.track !== track);
+    });
+  }
+
+  /* ── Registration tabs ───────────────────────────── */
+  function switchRegTab(e, panel) {
+    document.querySelectorAll('.reg-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.reg-panel').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById('reg-' + panel).classList.add('active');
+  }
+
+  /* ── Lightbox ────────────────────────────────────── */
+  const galleryImgs = Array.from(document.querySelectorAll('#galleryGrid .gallery-item img')).map(i => i.src);
+  let currentIdx = 0;
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    document.getElementById('lightbox-img').src = galleryImgs[idx];
+    document.getElementById('lightbox-counter').textContent = (idx + 1) + ' / ' + galleryImgs.length;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLightboxBg(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  function moveLightbox(dir) {
+    currentIdx = (currentIdx + dir + galleryImgs.length) % galleryImgs.length;
+    document.getElementById('lightbox-img').src = galleryImgs[currentIdx];
+    document.getElementById('lightbox-counter').textContent = (currentIdx + 1) + ' / ' + galleryImgs.length;
+  }
+
+  const awardImgs = Array.from(document.querySelectorAll('#galleryAward .gallery-item img')).map(i => i.src);
+  let currentAwardIdx = 0;
+
+  function openLightboxAward(idx) {
+    currentAwardIdx = idx;
+    document.getElementById('lightbox-img').src = awardImgs[idx];
+    document.getElementById('lightbox-counter').textContent = (idx + 1) + ' / ' + awardImgs.length;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lightbox').dataset.mode = 'award';
+  }
+  function moveLightbox(dir) {
+    if (document.getElementById('lightbox').dataset.mode === 'award') {
+      currentAwardIdx = (currentAwardIdx + dir + awardImgs.length) % awardImgs.length;
+      document.getElementById('lightbox-img').src = awardImgs[currentAwardIdx];
+      document.getElementById('lightbox-counter').textContent = (currentAwardIdx + 1) + ' / ' + awardImgs.length;
+    } else {
+      currentIdx = (currentIdx + dir + galleryImgs.length) % galleryImgs.length;
+      document.getElementById('lightbox-img').src = galleryImgs[currentIdx];
+      document.getElementById('lightbox-counter').textContent = (currentIdx + 1) + ' / ' + galleryImgs.length;
+    }
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox').dataset.mode = '';
+    document.body.style.overflow = '';
+  }
+  function closeLightboxBg(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') moveLightbox(1);
+    if (e.key === 'ArrowLeft')  moveLightbox(-1);
+    if (e.key === 'Escape')     closeLightbox();
+  });
+</script>
+
+<script>
+  /* ── Visitor counter (CounterAPI.dev — no personal data) ── */
+  (function () {
+    var COUNTER_URL = 'https://api.counterapi.dev/v1/cshackathon-uog-2026/pageviews/up';
+    fetch(COUNTER_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var count = Number(d.count);
+        var formatted = isNaN(count) ? '—' : count.toLocaleString();
+        var el = document.getElementById('visit-count');
+        var elF = document.getElementById('visit-count-footer');
+        if (el)  el.textContent  = formatted;
+        if (elF) elF.textContent = formatted;
+      })
+      .catch(function () {
+        var el = document.getElementById('visit-count');
+        var elF = document.getElementById('visit-count-footer');
+        if (el)  el.textContent  = '—';
+        if (elF) elF.textContent = '—';
+      });
+  })();
+</script>
+
+<!-- ── GDPR / Cookie Notice ──────────────────────── -->
+<div id="gdpr-notice">
+  <p>
+    <strong style="color:var(--gold);">🍪 Privacy Notice</strong> &nbsp;
+    This site displays an anonymous page-view counter powered by
+    <a href="https://counterapi.dev" target="_blank" rel="noopener">CounterAPI</a>.
+    No personal data, cookies, or tracking identifiers are collected or stored.
+    See the <a href="https://www.universityofgalway.ie/privacy/" target="_blank" rel="noopener">University of Galway Privacy Policy</a>.
+  </p>
+  <button id="gdpr-dismiss">Got it</button>
+</div>
+<script>
+  (function () {
+    var notice = document.getElementById('gdpr-notice');
+    if (localStorage.getItem('gdpr_ok_v2') === '1') {
+      notice.classList.add('hidden');
+    }
+    document.getElementById('gdpr-dismiss').addEventListener('click', function () {
+      localStorage.setItem('gdpr_ok_v2', '1');
+      notice.classList.add('hidden');
+    });
+  })();
+</script>
