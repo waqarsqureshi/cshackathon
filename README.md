@@ -1,8 +1,8 @@
-# CT101 Computing Hackathon 2026
+# CT101 Computing Hackathon 2027
 **University of Galway · School of Computer Science**
 
-> Theme 2026: *"IoT is Bold"* & *"Old is Gold"*  
-> Wednesday, March 18, 2026 — CSB 2015 / CSB 2014 · 3:00–6:00 PM · Awards: SULT Corrib Room 6:00–7:00 PM
+> Theme 2027: *"Environment: Water, Air, and Soil"*  
+> Wednesday, March 17, 2027 — CSB 2015 / CSB 2014 · 3:00–6:00 PM · Awards: SULT Corrib Room 6:00–7:00 PM
 
 Live site: **https://waqarsqureshi.github.io/cshackathon/**
 
@@ -21,7 +21,8 @@ Live site: **https://waqarsqureshi.github.io/cshackathon/**
 ## File Structure
 
 ```
-uoghackathon/
+cshackathon/
+└── 2025 - 2026
 ├── index.html          ← single-page website (all CSS + JS embedded)
 ├── images/
 │   └── tech-showcase.jpg   ← hackathon event poster
@@ -34,7 +35,7 @@ uoghackathon/
 
 | Section | Content |
 |---------|---------|
-| Hero | Event poster + live countdown to March 18 |
+| Hero | Event poster + live countdown to March 17 |
 | About | What is the hackathon, key stats |
 | Event Details | Venues, times (Demo + Awards) |
 | Timeline | 4 assessment phases with weights |
