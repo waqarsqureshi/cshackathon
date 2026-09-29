@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102b31">
+  <meta name="theme-color" content="#7C0047">
   <title>CT101 Computing Systems Hackathon 2026–27 | University of Galway</title>
   <meta name="description" content="The CT101 Computing Systems Hackathon returns to the University of Galway on March 17, 2027. Explore the 2026–27 theme: Environment — Water, Air and Soil. More details coming soon.">
   <meta property="og:type" content="website">
@@ -13,13 +13,19 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #102b31;
-      --muted: #557074;
-      --paper: #f5f6f0;
+      --ink: #000000;
+      --black: #000000;
+      --muted: #555555;
+      --paper: #f8f4f5;
       --white: #fff;
-      --green: #b6edc5;
-      --teal: #176c69;
-      --line: rgba(16, 43, 49, .14);
+
+      /* University of Galway brand colours */
+      --deep-maroon: #7C0047;
+      --maroon: #C3006B;
+      --pink: #E6007E;
+      --gold: #FFC72B;
+
+      --line: rgba(124, 0, 71, .18);
       --serif: Georgia, "Times New Roman", serif;
       --sans: "Segoe UI", Arial, sans-serif;
     }
@@ -34,7 +40,7 @@
       line-height: 1.6;
     }
     a { color: inherit; }
-    a:focus-visible { outline: 3px solid #e1a85f; outline-offset: 4px; }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
     .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
 
     .topbar {
@@ -70,8 +76,8 @@
       overflow: hidden;
       padding-bottom: 98px;
       background:
-        radial-gradient(ellipse at 78% 16%, rgba(135, 191, 148, .2), transparent 31%),
-        linear-gradient(125deg, #102b31 4%, #174a4b 65%, #27665d);
+        radial-gradient(ellipse at 78% 16%, rgba(230, 0, 126, .24), transparent 31%),
+        linear-gradient(125deg, var(--deep-maroon) 4%, var(--maroon) 65%, var(--pink));
       color: var(--white);
     }
     .hero::after {
@@ -97,7 +103,7 @@
     }
     .eyebrow {
       margin: 0 0 18px;
-      color: var(--green);
+      color: var(--gold);
       font-size: .78rem;
       font-weight: 750;
       letter-spacing: .16em;
@@ -112,7 +118,7 @@
       letter-spacing: -.055em;
       line-height: .99;
     }
-    h1 span { color: var(--green); }
+    h1 span { color: var(--gold); }
     .intro {
       max-width: 560px;
       margin: 24px 0 0;
@@ -128,14 +134,14 @@
       padding: 11px 19px;
       border: 1px solid transparent;
       border-radius: 999px;
-      background: var(--green);
-      color: var(--ink);
+      background: var(--gold);
+      color: var(--black);
       font-size: .92rem;
       font-weight: 750;
       text-decoration: none;
       transition: transform .2s ease, background .2s ease;
     }
-    .button:hover { transform: translateY(-2px); background: #d1f5da; }
+    .button:hover { transform: translateY(-2px); background: #FFE08A; }
     .button-secondary { border-color: rgba(255,255,255,.45); background: transparent; color: var(--white); }
     .button-secondary:hover { background: rgba(255,255,255,.1); }
 
@@ -158,7 +164,7 @@
     .date-day {
       display: block;
       margin: 10px 0 2px;
-      color: var(--green);
+      color: var(--gold);
       font-family: var(--serif);
       font-size: 4.2rem;
       line-height: 1;
@@ -231,9 +237,9 @@
       box-shadow: 0 0 0 24px currentColor, 0 0 0 48px currentColor;
       content: "";
     }
-    .theme-card.water { color: #267b91; }
-    .theme-card.air { color: #547d67; }
-    .theme-card.soil { color: #9d6643; }
+    .theme-card.water { color: var(--deep-maroon); }
+    .theme-card.air { color: var(--maroon); }
+    .theme-card.soil { color: var(--pink); }
     .theme-number { margin: 0 0 22px; font-size: .75rem; font-weight: 750; letter-spacing: .12em; }
     .theme-card h3 {
       position: relative;
@@ -254,9 +260,9 @@
       margin-top: 88px;
       padding: 38px;
       border-radius: 22px;
-      background: #e8eee7;
+      background: #f2e5eb;
     }
-    .coming-copy .eyebrow { margin-bottom: 12px; color: var(--teal); }
+    .coming-copy .eyebrow { margin-bottom: 12px; color: var(--deep-maroon); }
     .coming-copy h2 {
       margin: 0;
       font-family: var(--serif);
@@ -288,7 +294,7 @@
       height: 7px;
       flex: 0 0 auto;
       border-radius: 50%;
-      background: var(--teal);
+      background: var(--deep-maroon);
       content: "";
     }
     .status-note { grid-column: 1 / -1; margin: 18px 0 0; color: var(--muted); font-size: .86rem; }
@@ -374,7 +380,7 @@
     <section class="theme-section" id="theme" aria-labelledby="theme-heading">
       <div class="section-heading">
         <div>
-          <p class="eyebrow" style="color:var(--teal)">The 2027 theme</p>
+          <p class="eyebrow" style="color:var(--deep-maroon)">The 2027 theme</p>
           <h2 id="theme-heading">Environment:<br>Water, Air and Soil</h2>
         </div>
         <p>Three essentials of a thriving planet. The detailed theme brief and challenge information will be shared soon.</p>
